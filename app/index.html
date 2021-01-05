@@ -12,9 +12,9 @@
 <body>
 <!-- partial:index.partial.html -->
 <div id="app">
-  <header class="jumbotron"></header>
+  <header class="banner"></header>
   <!-- question-->
-  <div class="container selectForm" v-if="isShowUp &amp; page &lt; 10">
+  <div class="container selectForm" v-if="isShowUp & page < 10">
     <h1>Q{{page+1}}: {{question}}</h1>
     <hr/>
     <div class="custom-control custom-radio mt-4" v-for="option in options">
@@ -27,7 +27,7 @@
     </button>
   </div>
   <!-- result-->
-  <div class="container-fluid" v-if="page &gt;= 10">
+  <div class="container-fluid" v-if="page >= 10">
     <div class="row bg-light">
       <div class="col-md-5 text-center">
         <h1>{{name}}</h1>
