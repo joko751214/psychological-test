@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Week3 - branch</title>
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css'>
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
+  <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@9/dist/sweetalert2.min.css'>
+  <link rel="stylesheet" href="./assets/style/all.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div id="app">
+  <header class="jumbotron"></header>
+  <!-- question-->
+  <div class="container selectForm" v-if="isShowUp &amp; page &lt; 10">
+    <h1>Q{{page+1}}: {{question}}</h1>
+    <hr/>
+    <div class="custom-control custom-radio mt-4" v-for="option in options">
+      <input class="custom-control-input" type="radio" name="question" :id="option.fraction" :value="option.fraction"/>
+      <label class="custom-control-label" :for="option.fraction">{{option.description}}</label>
+    </div>
+    <button class="btn float-right nextBtn mt-4" @click="nextPage">
+      <h6 v-if="page === 9">看結果</h6>
+      <h6 v-else="v-else">下一題</h6>
+    </button>
+  </div>
+  <!-- result-->
+  <div class="container-fluid" v-if="page &gt;= 10">
+    <div class="row bg-light">
+      <div class="col-md-5 text-center">
+        <h1>{{name}}</h1>
+      </div>
+      <div class="col-md-7"><span>{{desc}}</span></div>
+    </div>
+    <hr/>
+    <div class="row justify-content-center">
+      <div class="col-md-5 text-center">
+        <h1>{{level}}</h1>
+      </div>
+    </div>
+    <div class="row mt-4 justify-content-center">
+      <div class="col-md-5 bg-light"><span>{{levelDescription}}</span></div>
+    </div>
+    <button class="btn float-right nextBtn mt-4" @click="resultBtn">
+      <h6 v-if="page &lt; 15">下一個</h6>
+      <h6 v-else="v-else" @click="restart">重新測驗</h6>
+    </button>
+  </div>
+  <!-- menu-->
+  <div class="container mt-5" v-if="!isShowUp">
+    <div class="row">
+      <div class="col-lg-6 text-lg-left text-center">
+        <h1>五大性格特質心理測驗 </h1><span>Big Five personality traits test</span>
+      </div>
+    </div>
+    <div class="row align-items-center justify-content-end mt-5">
+      <div class="col-lg-4">
+        <p>{{description}}</p>
+      </div>
+      <div class="col-lg-3 text-center mt-3">
+        <a class="btn btn-primary" @click="nextPage('start')">
+          <p class="h3 m-0">開始測驗 ➜</p>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- partial -->
+<script src='https://code.jquery.com/jquery-3.3.1.slim.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js'></script>
+<script src='https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js'></script>
+<script src='https://cdn.jsdelivr.net/npm/vue/dist/vue.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js'></script>
+<script src='https://cdn.jsdelivr.net/npm/sweetalert2@9/dist/sweetalert2.min.js'></script>
+<script  src="./assets/js/all.js"></script>
+
+</body>
+</html>
